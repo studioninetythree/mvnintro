@@ -3,60 +3,51 @@ package com.ninetythree.employee;
 /**
  * Created by Dillan on 12/2/2015.
  */
-public class Employee
-{
+public class Employee {
     private int empNumber;
     private String name;
     private String surname;
     private double salary;
 
-    public Employee(){}
+    public Employee() {
+    }
 
-    public Employee(int empNumber, String name, String surname, double salary)
-    {
+    public Employee(int empNumber, String name, String surname, double salary) {
         this.empNumber = empNumber;
         this.name = name;
         this.surname = surname;
         this.salary = salary;
     }
 
-    public int getEmpNumber()
-    {
+    public int getEmpNumber() {
         return empNumber;
     }
 
-    public void setEmpNumber(int empNumber)
-    {
+    public void setEmpNumber(int empNumber) {
         this.empNumber = empNumber;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getSurname()
-    {
+    public String getSurname() {
         return surname;
     }
 
-    public void setSurname(String surname)
-    {
+    public void setSurname(String surname) {
         this.surname = surname;
     }
 
-    public double getSalary()
-    {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary)
-    {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 }

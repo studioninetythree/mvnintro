@@ -7,41 +7,36 @@ import junit.framework.TestSuite;
 /**
  * Created by Dillan on 12/2/2015.
  */
-public class TestEmployee extends TestCase
-{
+public class TestEmployee extends TestCase {
     private int empNumber;
     private String name;
     private String surname;
     private double salary;
 
-    public TestEmployee(String testName)
-    {
-        super( testName );
+    public TestEmployee(String testName) {
+        super(testName);
     }
 
-    public static Test suite()
-    {
-        return new TestSuite( TestEmployee.class );
+    public static Test suite() {
+        return new TestSuite(TestEmployee.class);
     }
 
-    public void testTestFileH()
-    {
-        assertTrue( true );
+    public void testTestFileH() {
+        assertTrue(true);
     }
-    public void setUp() throws Exception
-    {
+
+    public void setUp() throws Exception {
 
     }
 
-    public void tearDown() throws Exception
-    {
+    public void tearDown() throws Exception {
 
     }
 
-    public TestEmployee() {}
+    public TestEmployee() {
+    }
 
-    public TestEmployee(int empNumber, String name, String surname, double salary)
-    {
+    public TestEmployee(int empNumber, String name, String surname, double salary) {
         this.empNumber = empNumber;
         this.name = name;
         this.surname = surname;
@@ -49,46 +44,38 @@ public class TestEmployee extends TestCase
         assertEquals(5689.56, salary);
     }
 
-    public int getEmpNumber()
-    {
+    public int getEmpNumber() {
         return empNumber;
     }
 
-    public void setEmpNumber(int empNumber)
-    {
+    public void setEmpNumber(int empNumber) {
         assertNotNull(empNumber);
         this.empNumber = empNumber;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName(String name)
-    {
+    public void setName(String name) {
         assertNotNull(name);
         this.name = name;
     }
 
-    public String getSurname()
-    {
+    public String getSurname() {
         return surname;
     }
 
-    public void setSurname(String surname)
-    {
+    public void setSurname(String surname) {
         assertNotNull(surname);
         this.surname = surname;
     }
 
-    public double getSalary()
-    {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary)
-    {
+    public void setSalary(double salary) {
         assertNotNull(salary);
         this.salary = salary;
     }

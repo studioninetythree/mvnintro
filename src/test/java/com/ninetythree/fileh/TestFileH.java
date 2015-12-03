@@ -14,8 +14,7 @@ import java.util.Scanner;
 /**
  * Created by Dillan on 12/2/2015.
  */
-public class TestFileH extends TestCase
-{
+public class TestFileH extends TestCase {
     static private Scanner input;
     final static private String inputFile = "src/test/Employees.txt";
     final static private String outputFile = "EmployeesSalaryIncrease.txt";
@@ -24,38 +23,29 @@ public class TestFileH extends TestCase
     final static File file = new File("EmployeesSalaryRaise.txt");
 
 
-    public void setUp() throws Exception
-    {
+    public void setUp() throws Exception {
     }
 
-    public void tearDown() throws Exception
-    {
+    public void tearDown() throws Exception {
     }
 
-    static public void testCloseFile()
-    {
-        try
-        {
-            if(input != null)
+    static public void testCloseFile() {
+        try {
+            if (input != null)
                 input.close();
-        }
-        catch (NullPointerException exception)
-        {
+        } catch (NullPointerException exception) {
             throw exception;
         }
 
     }
 
-    static public void testReadFile()
-    {
-        try
-        {
+    static public void testReadFile() {
+        try {
             input = new Scanner(new File(inputFile));
             assertNotNull(input);
             assertNotNull(inputFile);
 
-            while(input.hasNext())
-            {
+            while (input.hasNext()) {
                 String line = input.nextLine();
                 String[] tokens = line.split("#");
                 int empNo = Integer.parseInt(tokens[0]);
@@ -64,44 +54,30 @@ public class TestFileH extends TestCase
                 double salary = Double.parseDouble(tokens[3]);
                 empsRead.add(new TestEmployee(empNo, name, surname, salary));
             }
-        }
-        catch (FileNotFoundException e)
-        {
+        } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
-        }
-        finally
-        {
-            try
-            {
+        } finally {
+            try {
                 testCloseFile();
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 assertEquals(ex, new NullPointerException());
             }
         }
         testCloseFile();
     }
 
-    static public void testWriteFile(ArrayList<TestEmployee> e)
-    {
+    static public void testWriteFile(ArrayList<TestEmployee> e) {
         assertNotNull(empsRead);
-        if(empsRead.isEmpty() || empsRead == null)
-        {
+        if (empsRead.isEmpty() || empsRead == null) {
             testCloseFile();
-        }
-        else
-        {
+        } else {
             empsWrite.addAll(empsRead);
             assertTrue(empsWrite.equals(empsRead));
-            try
-            {
-                try
-                {
+            try {
+                try {
                     FileWriter fw = new FileWriter(file);
                     BufferedWriter bw = new BufferedWriter(fw);
-                    for (TestEmployee em : empsWrite)
-                    {
+                    for (TestEmployee em : empsWrite) {
                         double salIncrease = em.getSalary() + (em.getSalary() / 50 * 100);
                         em.setSalary(salIncrease);
 
@@ -112,23 +88,18 @@ public class TestFileH extends TestCase
                         bw.write(to_write);
                         bw.flush();
                     }
-                }
-                catch (Exception ex)
-                {
+                } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getLocalizedMessage());
                 }
                 JOptionPane.showMessageDialog(null, "Write : " + empsWrite.size());
                 testCloseFile();
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex.getLocalizedMessage());
             }
         }
     }
 
-    static public ArrayList<TestEmployee> testGetEmpsRead()
-    {
+    static public ArrayList<TestEmployee> testGetEmpsRead() {
         assertNotNull(empsRead);
         return empsRead;
     }

@@ -1,4 +1,5 @@
 package com.ninetythree.fileh;
+
 import com.ninetythree.employee.Employee;
 
 import javax.swing.*;
@@ -12,8 +13,7 @@ import java.util.Scanner;
 /**
  * Created by Dillan on 12/2/2015.
  */
-public class FileH
-{
+public class FileH {
     static private Scanner input;
     final static private String inputFile = "Employees.txt";
     final static private String outputFile = "EmployeesSalaryIncrease.txt";
@@ -21,27 +21,20 @@ public class FileH
     static ArrayList<Employee> empsWrite = new ArrayList<Employee>();
     final static File file = new File("EmployeesSalaryRaise.txt");
 
-    static public void testCloseFile()
-    {
-        try
-        {
+    static public void testCloseFile() {
+        try {
             input.close();
-        }
-        catch (NullPointerException exception)
-        {
+        } catch (NullPointerException exception) {
             throw exception;
         }
 
     }
 
-    static public void testReadFile()
-    {
-        try
-        {
+    static public void testReadFile() {
+        try {
             input = new Scanner(new File(inputFile));
 
-            while(input.hasNext())
-            {
+            while (input.hasNext()) {
                 String line = input.nextLine();
                 String[] tokens = line.split("#");
                 int empNo = Integer.parseInt(tokens[0]);
@@ -50,33 +43,23 @@ public class FileH
                 double salary = Double.parseDouble(tokens[3]);
                 empsRead.add(new Employee(empNo, name, surname, salary));
             }
-            JOptionPane.showMessageDialog(null,"Read: " + empsRead.size());
-        }
-        catch (FileNotFoundException e)
-        {
+            JOptionPane.showMessageDialog(null, "Read: " + empsRead.size());
+        } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
-        }
-        finally
-        {
-            try
-            {
+        } finally {
+            try {
                 testCloseFile();
-            }
-            catch (NullPointerException ex)
-            {
+            } catch (NullPointerException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         }
         testCloseFile();
     }
 
-    static public void testWriteFile(ArrayList<Employee> emp)
-    {
-        if(empsRead.isEmpty() || empsRead == null)
-        {
+    static public void testWriteFile(ArrayList<Employee> emp) {
+        if (empsRead.isEmpty() || empsRead == null) {
             testCloseFile();
-        }
-        else {
+        } else {
             empsWrite.addAll(empsRead);
             try {
                 FileWriter fw = new FileWriter(file);
@@ -92,8 +75,7 @@ public class FileH
                     bw.write(to_write);
                     bw.flush();
                 }
-            } catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex.getLocalizedMessage());
             }
             JOptionPane.showMessageDialog(null, "Write : " + empsWrite.size());
@@ -101,8 +83,7 @@ public class FileH
         }
     }
 
-    static public ArrayList<Employee> testGetEmpsRead()
-    {
+    static public ArrayList<Employee> testGetEmpsRead() {
         return empsRead;
     }
 
